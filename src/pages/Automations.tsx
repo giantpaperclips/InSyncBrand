@@ -38,7 +38,7 @@ export default function Automations() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight"
           >
-            Financial Clarity, Creative Media & <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">AI Automation</span>
+            Financial Clarity, Creative Media & <span className="text-primary">AI Automation</span>
           </motion.h1>
           
           <motion.p 
@@ -176,7 +176,7 @@ export default function Automations() {
 
             {/* Feature 6 */}
             <div className="premium-card p-8 group">
-              <div className="w-12 h-12 rounded-lg bg-pink-500/10 flex items-center justify-center text-pink-500 mb-6">
+              <div className="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-500 mb-6">
                 <Zap size={24} />
               </div>
               <h3 className="text-xl font-bold mb-3">CRM Automations</h3>
