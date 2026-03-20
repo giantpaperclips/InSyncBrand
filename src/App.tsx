@@ -7,6 +7,8 @@ import { ContactModalProvider, useContactModal } from './contexts/ContactModalCo
 import Automations from './pages/Automations';
 import Bookkeeping from './pages/Bookkeeping';
 import Creations from './pages/Creations';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import CookiePolicy from './pages/CookiePolicy';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -41,9 +43,9 @@ function Layout({ children }: { children: React.ReactNode }) {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 border-b border-[var(--border-color)] bg-[var(--bg-color)]/80 backdrop-blur-md transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity" onClick={closeMenu}>
-              <Logo className="h-10 w-auto" />
+              <Logo className="h-14 w-auto drop-shadow-sm" />
             </Link>
             
             <div className="hidden md:flex items-center space-x-8">
@@ -98,7 +100,7 @@ function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-8">
             <div className="flex flex-col gap-4">
               <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                <Logo className="h-8 w-auto opacity-80" />
+                <Logo className="h-12 w-auto opacity-80" />
               </Link>
               <p className="text-sm text-[var(--text-muted)] max-w-xs">
                 Financial Clarity, Creative Media & AI Automation. Helping Businesses Scale Efficiently.
@@ -121,8 +123,8 @@ function Layout({ children }: { children: React.ReactNode }) {
               &copy; {new Date().getFullYear()} InSync. All rights reserved.
             </div>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-primary transition-colors">Cookie Policy</a>
+              <Link to="/privacy" className="hover:text-primary transition-colors" onClick={() => window.scrollTo(0,0)}>Privacy Policy</Link>
+              <Link to="/cookies" className="hover:text-primary transition-colors" onClick={() => window.scrollTo(0,0)}>Cookie Policy</Link>
             </div>
           </div>
         </div>
@@ -140,6 +142,8 @@ export default function App() {
             <Route path="/" element={<Automations />} />
             <Route path="/bookkeeping" element={<Bookkeeping />} />
             <Route path="/creations" element={<Creations />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/cookies" element={<CookiePolicy />} />
           </Routes>
         </Layout>
       </Router>

@@ -110,15 +110,17 @@ export default function Bookkeeping() {
               </ul>
             </div>
 
-            {/* Business Support */}
+            {/* Tax Services */}
             <div className="premium-card p-8 group">
               <div className="w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-500 mb-6">
                 <Briefcase size={24} />
               </div>
-              <h3 className="text-xl font-bold mb-4">Business Support Services</h3>
-              <p className="text-[var(--text-muted)] mb-4">
-                We offer comprehensive administration support to keep your business running smoothly.
-              </p>
+              <h3 className="text-xl font-bold mb-4">Tax Services</h3>
+              <ul className="space-y-3 text-[var(--text-muted)] mb-6">
+                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-amber-500 shrink-0" /> Self Assessment</li>
+                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-amber-500 shrink-0" /> Making Tax Digital</li>
+                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-amber-500 shrink-0" /> VAT returns</li>
+              </ul>
               <button onClick={openModal} className="text-[var(--color-primary)] font-bold flex items-center gap-1 hover:gap-2 transition-all">
                 Get in touch to discuss your requirements <ArrowRight size={16} />
               </button>

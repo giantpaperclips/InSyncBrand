@@ -32,7 +32,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         </div>
 
         <form 
-          action="https://formspree.io/f/YOUR_FORMSPREE_ID" 
+          action="https://formspree.io/f/xeerdnwv" 
           method="POST" 
           className="p-6 space-y-4 font-sans"
         >

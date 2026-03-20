@@ -8,10 +8,15 @@ import {
   CheckCircle2,
   PlayCircle
 } from 'lucide-react';
+import { useState } from 'react';
+import CreationsModal from '../components/CreationsModal';
 
 export default function Creations() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <>
+      <CreationsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       {/* Hero Section */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
@@ -163,9 +168,9 @@ export default function Creations() {
           <p className="text-xl text-[var(--text-muted)] mb-10">
             Let's discuss your next creative project and how we can make it stand out.
           </p>
-          <a href="mailto:dave@insyncbookkeeping.co.uk" className="inline-flex bg-purple-600 hover:bg-purple-700 text-white px-10 py-4 rounded-md font-bold text-lg transition-colors shadow-lg shadow-purple-600/25 items-center gap-2 mx-auto">
+          <button onClick={() => setIsModalOpen(true)} className="inline-flex bg-purple-600 hover:bg-purple-700 text-white px-10 py-4 rounded-md font-bold text-lg transition-colors shadow-lg shadow-purple-600/25 items-center gap-2 mx-auto">
             Start a Project <ArrowRight size={20} />
-          </a>
+          </button>
         </div>
       </section>
     </>
