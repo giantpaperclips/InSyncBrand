@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #6366F1;
+  --color-cta: #10B981;
+  --color-accent: #F59E0B;
+}
+
+@layer base {
+  :root {
+    --bg-color: #FFFFFF;
+    --text-color: #1E293B;
+    --text-muted: #64748B;
+    --card-bg: #F8FAFC;
+    --border-color: #E2E8F0;
+  }
+
+  .dark {
+    --bg-color: #0A0A0A;
+    --text-color: #F8FAFC;
+    --text-muted: #94A3B8;
+    --card-bg: #1A1A1A;
+    --border-color: #333333;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* Premium Card Interactions */
+.premium-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+  will-change: transform, box-shadow;
+  position: relative;
+  border-radius: 0.75rem;
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.dark .premium-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  border-color: var(--color-primary);
+}
+
+/* Subtle 3D Tilt effect applied via JS, but base transition here */
+.tilt-card {
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+
+/* Glow border reveal */
+.premium-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(to bottom right, var(--color-primary), var(--color-cta));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.premium-card:hover::before {
+  opacity: 1;
+}
+
+/* Content Reveal */
+.reveal-content {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease, margin 0.4s ease;
+  overflow: hidden;
+}
+
+.premium-card:hover .reveal-content {
+  max-height: 150px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+/* Image Zoom */
+.img-zoom-container {
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.img-zoom-container img {
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+.premium-card:hover .img-zoom-container img {
+  transform: scale(1.05);
+}
+
+/* Respect User Preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .premium-card:hover {
+    transform: none;
+  }
+  .premium-card:hover .img-zoom-container img {
+    transform: none;
+  }
+}
