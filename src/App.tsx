@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Moon, Sun, Menu, X, Mail, Phone } from 'lucide-react';
 import { Logo } from './components/Logo';
+import { ContactModalProvider, useContactModal } from './contexts/ContactModalContext';
 
 import Automations from './pages/Automations';
 import Bookkeeping from './pages/Bookkeeping';
@@ -19,6 +20,7 @@ function Layout({ children }: { children: React.ReactNode }) {
   const [isDark, setIsDark] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { openModal } = useContactModal();
 
   useEffect(() => {
     if (isDark) {
@@ -51,9 +53,9 @@ function Layout({ children }: { children: React.ReactNode }) {
               <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-[var(--card-bg)] transition-colors" aria-label="Toggle theme">
                 {isDark ? <Sun size={18} /> : <Moon size={18} />}
               </button>
-              <a href="mailto:dave@insyncbookkeeping.co.uk" className="bg-cta hover:bg-emerald-600 text-white px-5 py-2 rounded-md text-sm font-medium transition-colors shadow-sm">
+              <button onClick={openModal} className="bg-[var(--color-cta)] hover:brightness-110 text-white px-5 py-2 rounded-md text-sm font-bold transition-colors shadow-sm">
                 Get Started
-              </a>
+              </button>
             </div>
 
             <div className="md:hidden flex items-center gap-4">
@@ -74,9 +76,12 @@ function Layout({ children }: { children: React.ReactNode }) {
               <Link to="/" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-base font-medium ${isActive('/') ? 'bg-[var(--card-bg)] text-primary' : 'hover:bg-[var(--card-bg)]'}`}>Automations</Link>
               <Link to="/bookkeeping" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-base font-medium ${isActive('/bookkeeping') ? 'bg-[var(--card-bg)] text-blue-500' : 'hover:bg-[var(--card-bg)]'}`}>Bookkeeping</Link>
               <Link to="/creations" onClick={closeMenu} className={`block px-3 py-2 rounded-md text-base font-medium ${isActive('/creations') ? 'bg-[var(--card-bg)] text-purple-500' : 'hover:bg-[var(--card-bg)]'}`}>Creations</Link>
-              <a href="mailto:dave@insyncbookkeeping.co.uk" onClick={closeMenu} className="block w-full text-center bg-cta text-white px-3 py-2 rounded-md text-base font-medium mt-4">
+              <button 
+                onClick={() => { closeMenu(); openModal(); }} 
+                className="block w-full text-center bg-[var(--color-cta)] text-white px-3 py-2 rounded-md text-base font-bold mt-4"
+              >
                 Get Started
-              </a>
+              </button>
             </div>
           </div>
         )}
@@ -128,14 +133,16 @@ function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Automations />} />
-          <Route path="/bookkeeping" element={<Bookkeeping />} />
-          <Route path="/creations" element={<Creations />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <ContactModalProvider>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Automations />} />
+            <Route path="/bookkeeping" element={<Bookkeeping />} />
+            <Route path="/creations" element={<Creations />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </ContactModalProvider>
   );
 }

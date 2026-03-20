@@ -7,8 +7,10 @@ import {
   ArrowRight, 
   CheckCircle2
 } from 'lucide-react';
+import { useContactModal } from '../contexts/ContactModalContext';
 
 export default function Bookkeeping() {
+  const { openModal } = useContactModal();
   return (
     <>
       {/* Hero Section */}
@@ -50,9 +52,9 @@ export default function Bookkeeping() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <a href="mailto:dave@insyncbookkeeping.co.uk" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md font-medium transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-500/25">
+            <button onClick={openModal} className="w-full sm:w-auto bg-[var(--color-primary)] hover:brightness-110 text-white px-8 py-3 rounded-md font-bold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-500/25">
               Contact Us <ArrowRight size={18} />
-            </a>
+            </button>
           </motion.div>
         </div>
       </section>
@@ -117,9 +119,9 @@ export default function Bookkeeping() {
               <p className="text-[var(--text-muted)] mb-4">
                 We offer comprehensive administration support to keep your business running smoothly.
               </p>
-              <a href="mailto:dave@insyncbookkeeping.co.uk" className="text-amber-500 font-medium flex items-center gap-1 hover:gap-2 transition-all">
+              <button onClick={openModal} className="text-[var(--color-primary)] font-bold flex items-center gap-1 hover:gap-2 transition-all">
                 Get in touch to discuss your requirements <ArrowRight size={16} />
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -133,9 +135,9 @@ export default function Bookkeeping() {
           <p className="text-xl text-[var(--text-muted)] mb-10">
             Get in touch today to discuss how we can support your business.
           </p>
-          <a href="mailto:dave@insyncbookkeeping.co.uk" className="inline-flex bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-md font-bold text-lg transition-colors shadow-lg shadow-blue-600/25 items-center gap-2 mx-auto">
+          <button onClick={openModal} className="inline-flex bg-[var(--color-cta)] hover:brightness-110 text-white px-10 py-4 rounded-md font-bold text-lg transition-colors shadow-lg shadow-orange-500/25 items-center gap-2 mx-auto">
             Email Dave <ArrowRight size={20} />
-          </a>
+          </button>
         </div>
       </section>
     </>

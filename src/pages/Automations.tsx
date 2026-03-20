@@ -13,8 +13,10 @@ import {
   Code
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useContactModal } from '../contexts/ContactModalContext';
 
 export default function Automations() {
+  const { openModal } = useContactModal();
   return (
     <>
       {/* Hero Section */}
@@ -56,9 +58,9 @@ export default function Automations() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <a href="#automations" className="w-full sm:w-auto bg-primary hover:bg-indigo-600 text-white px-8 py-3 rounded-md font-medium transition-colors flex items-center justify-center gap-2 shadow-lg shadow-primary/25">
+            <button onClick={openModal} className="w-full sm:w-auto bg-[var(--color-primary)] hover:brightness-110 text-white px-8 py-3 rounded-md font-bold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-500/25">
               Explore AI Automations <ArrowRight size={18} />
-            </a>
+            </button>
             <a href="#ecosystem" className="w-full sm:w-auto bg-[var(--card-bg)] hover:bg-[var(--border-color)] border border-[var(--border-color)] px-8 py-3 rounded-md font-medium transition-colors flex items-center justify-center">
               View All Services
             </a>
@@ -77,9 +79,9 @@ export default function Automations() {
               </p>
             </div>
             <div className="mt-6 md:mt-0">
-              <a href="mailto:dave@insyncbookkeeping.co.uk" className="text-primary font-medium flex items-center gap-1 hover:gap-2 transition-all">
+              <button onClick={openModal} className="text-[var(--color-primary)] font-bold flex items-center gap-1 hover:gap-2 transition-all">
                 Learn more about AI <ArrowRight size={16} />
-              </a>
+              </button>
             </div>
           </div>
 
@@ -292,9 +294,9 @@ export default function Automations() {
           <p className="text-xl text-[var(--text-muted)] mb-10">
             Let's discuss how AI automation, clear financials, and strong branding can accelerate your growth.
           </p>
-          <a href="mailto:dave@insyncbookkeeping.co.uk" className="inline-flex bg-cta hover:bg-emerald-600 text-white px-10 py-4 rounded-md font-bold text-lg transition-colors shadow-lg shadow-cta/25 items-center gap-2 mx-auto">
+          <button onClick={openModal} className="inline-flex bg-[var(--color-cta)] hover:brightness-110 text-white px-10 py-4 rounded-md font-bold text-lg transition-colors shadow-lg shadow-orange-500/25 items-center gap-2 mx-auto">
             Book a Free Consultation <ArrowRight size={20} />
-          </a>
+          </button>
         </div>
       </section>
     </>
