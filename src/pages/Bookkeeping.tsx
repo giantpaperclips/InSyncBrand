@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
 import { 
   Calculator, 
   FileText, 
@@ -13,6 +14,10 @@ export default function Bookkeeping() {
   const { openModal } = useContactModal();
   return (
     <>
+      <Helmet>
+        <title>Bookkeeping &amp; Tax Services — InSync Brand</title>
+        <meta name="description" content="Professional bookkeeping, payroll, and tax services. Get dedicated financial clarity for your business with InSync Brand's expert accountants." />
+      </Helmet>
       {/* Hero Section */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>

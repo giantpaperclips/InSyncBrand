@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { Moon, Sun, Menu, X, Mail, Phone } from 'lucide-react';
 import { Logo } from './components/Logo';
 import { ContactModalProvider, useContactModal } from './contexts/ContactModalContext';
@@ -135,18 +136,20 @@ function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <ContactModalProvider>
-      <Router>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Automations />} />
-            <Route path="/bookkeeping" element={<Bookkeeping />} />
-            <Route path="/creations" element={<Creations />} />
-            <Route path="/privacy" element={<PrivacyPolicy />} />
-            <Route path="/cookies" element={<CookiePolicy />} />
-          </Routes>
-        </Layout>
-      </Router>
-    </ContactModalProvider>
+    <HelmetProvider>
+      <ContactModalProvider>
+        <Router>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Automations />} />
+              <Route path="/bookkeeping" element={<Bookkeeping />} />
+              <Route path="/creations" element={<Creations />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/cookies" element={<CookiePolicy />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </ContactModalProvider>
+    </HelmetProvider>
   );
 }

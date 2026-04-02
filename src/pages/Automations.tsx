@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
 import { 
   Bot, 
   Workflow, 
@@ -19,6 +20,10 @@ export default function Automations() {
   const { openModal } = useContactModal();
   return (
     <>
+      <Helmet>
+        <title>Automations &amp; AI Solutions — InSync Brand</title>
+        <meta name="description" content="Streamline your workflow with InSync Brand's AI automations. We build custom AI agents and workflows to save you time and maximize efficiency." />
+      </Helmet>
       {/* Hero Section */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>

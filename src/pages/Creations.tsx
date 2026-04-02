@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
 import { 
   Video, 
   Film, 
@@ -16,6 +17,10 @@ export default function Creations() {
 
   return (
     <>
+      <Helmet>
+        <title>Creative Services &amp; Branding — InSync Brand</title>
+        <meta name="description" content="InSync Brand offers top-tier creative media, digital marketing, content creation, and branding. Let us tell your brand's story powerfully." />
+      </Helmet>
       <CreationsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       {/* Hero Section */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
